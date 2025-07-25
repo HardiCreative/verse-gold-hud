@@ -89,7 +89,7 @@ gold_hud_device := class(creative_device):
             if (Gold := PlayerGold[Player]):
                 Gold
             else:
-            0
+                0
         var NewGold : int = OldGold + Amount
         set PlayerGold[Player] = NewGold
         UpdatePlayerGold(Player)
