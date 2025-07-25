@@ -89,25 +89,24 @@ gold_hud_device := class(creative_device):
             if (Gold := PlayerGold[Player]):
                 Gold
             else:
-                0
+            0
         var NewGold : int = OldGold + Amount
         set PlayerGold[Player] = NewGold
         UpdatePlayerGold(Player)
  
-        # Figure out NEW and OLD tier
         var OldTier : int =
             if (Tier := PlayerTier[Player]):
                 Tier
             else:
                 0
-    var NewTier : int = 0
-    for (Index -> Threshold : GoldThresholds):
-        if (NewGold >= Threshold):
-            set NewTier = Index
+        var NewTier : int = 0
+        for (Index -> Threshold : GoldThresholds):
+            if (NewGold >= Threshold):
+                set NewTier = Index
  
-    if (NewTier > OldTier):
-        set PlayerTier[Player] = NewTier
-        UpdatePlayerWeapons(Player, NewGold)
+        if (NewTier > OldTier):
+            set PlayerTier[Player] = NewTier
+            UpdatePlayerWeapons(Player, NewGold)
 
     OnPowerup300PickedUp(Agent : agent) : void =
         if (Player := player[Agent]):
